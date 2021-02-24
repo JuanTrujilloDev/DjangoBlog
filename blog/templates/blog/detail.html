@@ -1,0 +1,11 @@
+{% extends "blog/base.html"%}
+{%block content %}
+<div class="col-lg-10">
+        {%if post %}
+       
+        {% include "blog/list-inline.html" with post=post truncate=False detail=True%}
+          
+        {% endif %}
+</div>
+{% endblock content %}
+   

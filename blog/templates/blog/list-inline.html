@@ -1,0 +1,22 @@
+<article class="media content-section">
+  
+    <div class="media-body">
+      <div class="article-metadata">
+        <img class="rounded-circle account-img post-img mr-3 rounded-circle img-thumbnail shadow-sm  post-img" width="65" src="{{post.author.profile.image.url}}">
+        
+        <a class="mr-2" href="{{post.author.profile.get_absolute_url}}">{{ post.author }}</a>
+        <small class="text-muted">{{ post.date_posted|date:"F d, Y. " }}</small>
+        {% if request.user == post.author %}
+
+        <a class="btn btnEditar btn-outline-primary" href="{% url 'post-update' post.slug %}">Edit</a>
+
+        {% endif %}
+      </div>
+      <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+      {% if truncate %}
+      <p class="article-content">{{ post.content|linebreaks|truncatechars:80 }}</p>
+      {% else %}
+      <p class="article-content">{{ post.content|linebreaks}}</p>
+      {% endif %}
+    </div>
+  </article>

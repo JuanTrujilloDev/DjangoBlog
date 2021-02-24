@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %}
+{% if  request.user.is_authenticated %}
+<div class="col-lg-5 mt-4">
+  <div class="content-section">
+    <h2>Search for something:</h2>
+    <form class="example mb-2" method="GET" action="{% url 'search' %}" style="margin:auto;">
+
+      <input type="text" name="q" placeholder="Search"> <button type="submit" class="btn-primary"><i class="fa fa-search"></i></button>
+
+    </form>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-light"><h4><strong class="text-primary">Blogs posted so far: </strong>{{post_count}}</h4></li>
+        <li class="list-group-item list-group-item-light"><h4><strong class="text-primary">Registered users: </strong>{{user_count}}</h4></li>
+        </li>
+      </ul>
+    </p>
+  </div>
+</div>
+
+{% endif %}

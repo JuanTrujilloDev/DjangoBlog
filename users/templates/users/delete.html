@@ -1,0 +1,19 @@
+{% extends "blog/base.html"%}
+{%block content %}
+<div class="col-lg-8">
+    <div class="content-section inner">
+        <form method="POST">{% csrf_token %}
+            
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"><strong>Delete user: {{object.username}}</strong></legend>
+                <h2 class="delete-title">Are you sure you want to delete your user?</h2>
+                <p class="text-danger text-center">All your posts will be deleted, and you won't be able to log-in again!</p>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Yes, delete!</button>
+                <a class="btn btn-outline-primary" href="{{object.profile.get_absolute_url}}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

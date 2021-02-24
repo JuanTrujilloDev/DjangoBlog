@@ -1,0 +1,53 @@
+{% extends "blog/base.html"%}
+{% load crispy_forms_tags %}
+{%block content %}
+<div class="col-lg-8 ">
+<div class="content-section">
+    <div class="media">
+        
+        <img class="rounded-circle account-img" src="{{request.user.profile.image.url}}">
+        
+        <div class="media-body">
+            
+            <h2 class="account-heading">{{request.user.username}}</h2>
+            <p class="text-primary">{{request.user.email}}</p>
+            <p class="text-secondary"><strong>Bio: </strong>{{request.user.profile.bio}}</p>
+            <p class="text-secondary"><strong>Joined: </strong>{{request.user.date_joined|date:"M d, Y"}}</p>
+            
+            {% if user.user.birthday %}
+            <p class="text-secondary"><strong>Birthday: </strong>{{user.user.birthday|date:"M d, Y"}}</p>
+            {% endif %}
+
+            
+
+        </div>
+        
+        
+
+
+    </div>
+</div>
+
+<div class="content-section inner">
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"><strong>Update your information:</strong></legend>
+            {{user_form|crispy}}
+            {{profile_form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+            <a class="btn btn-outline-danger" href="{% url 'delete' %}">Delete</a>
+        </div>
+    </form>
+    <small class="text-muted">
+        Change your password with your email: <a class="ml-2" href="{% url 'password_reset' %}">Reset</a>
+    </small>
+</div>
+
+</div>
+
+
+
+{% endblock content %}
