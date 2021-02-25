@@ -12,7 +12,7 @@
     {% include "blog/css.html" %}
 
     {% if title %}
-        <title>Django Blog - {{ title }}</title>
+        <title>Django Blog - {{ title }} <link rel="shortcut icon" href="{% static 'logos/Logo-tigre.ico' %}" ></title>
     {% else %}
         <title>Django Blog</title>
     {% endif %}

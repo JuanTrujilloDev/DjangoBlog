@@ -26,7 +26,7 @@ SECRET_KEY = '2$zuawq3(vac5a-2%l*gm_w0wokuherwh2n$q8vfj3r$gq$s1j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -123,7 +123,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #-> Where the media is going to store files.
+
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / "static",
+
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') #-> Where the media is going to store files.
 MEDIA_URL = '/media/' #-> Public URL.
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
